@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="flowContainerPage1.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelGroupLayout id="pgl1">
+                <af:navigationPane id="np1" value="#{root_menu}" var="menuModel">
+                    <f:facet name="nodeStamp">
+                        <af:commandNavigationItem id="cni1" 
+                            text="#{menuModel.label}" 
+                            action="#{menuModel.doAction}"/>
+                    </f:facet>
+                </af:navigationPane>               
+                <af:panelHeader text="Hello from Page 1: Edit Person Region r1" id="ph1">
+                    <f:facet name="context"/>
+                    <f:facet name="menuBar"/>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="legend"/>
+                    <f:facet name="info"/>
+                    <af:region value="#{bindings.editpersontaskflowdefinition1.regionModel}" id="r1"/>
+                </af:panelHeader>
+                <af:panelHeader text="Edit Person Region r2" id="ph2">
+                    <f:facet name="context"/>
+                    <f:facet name="menuBar"/>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="legend"/>
+                    <f:facet name="info"/>
+                    <af:region value="#{bindings.editpersontaskflowdefinition2.regionModel}" id="r2"/>
+                </af:panelHeader>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81" id="flowContainerPage1PageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="editpersontaskflowdefinition1"
+              taskFlowId="/WEB-INF/edit-person-task-flow-definition.xml#edit-person-task-flow-definition"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="editpersontaskflowdefinition2"
+              taskFlowId="/WEB-INF/edit-person-task-flow-definition.xml#edit-person-task-flow-definition"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

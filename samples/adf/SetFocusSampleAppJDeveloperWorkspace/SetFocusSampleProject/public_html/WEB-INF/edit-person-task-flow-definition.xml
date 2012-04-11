@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="edit-person-task-flow-definition">
+    <default-activity>editPersonForm</default-activity>
+    <view id="editPersonForm">
+      <page>/editPersonForm.jsff</page>
+    </view>
+    <view id="editPersonAddressForm">
+      <page>/editPersonAddressForm.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>editPersonForm</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>next</from-outcome>
+        <to-activity-id>editPersonAddressForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>editPersonAddressForm</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>editPersonForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

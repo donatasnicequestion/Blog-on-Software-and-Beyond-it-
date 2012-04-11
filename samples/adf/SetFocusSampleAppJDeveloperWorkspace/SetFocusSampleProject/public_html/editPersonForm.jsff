@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:adfExt="http://donatas.nicequestion.com/adf/extentions">
+  <af:panelFormLayout id="pfl1" partialTriggers="cb2">
+    <af:inputText value="#{bindings.firstName.inputValue}" label="#{bindings.firstName.hints.label}"
+                  required="#{bindings.firstName.hints.mandatory}" columns="#{bindings.firstName.hints.displayWidth}"
+                  maximumLength="#{bindings.firstName.hints.precision}" shortDesc="#{bindings.firstName.hints.tooltip}"
+                  id="it1">
+      <f:validator binding="#{bindings.firstName.validator}"/>
+      <adfExt:setInitialFocus/>
+    </af:inputText>
+    <af:inputText value="#{bindings.lastName.inputValue}" label="#{bindings.lastName.hints.label}"
+                  required="#{bindings.lastName.hints.mandatory}" columns="#{bindings.lastName.hints.displayWidth}"
+                  maximumLength="#{bindings.lastName.hints.precision}" shortDesc="#{bindings.lastName.hints.tooltip}"
+                  id="it2">
+      <f:validator binding="#{bindings.lastName.validator}"/>      
+      <adfExt:setInitialFocus/>
+    </af:inputText>
+    <f:facet name="footer">
+      <af:panelGroupLayout id="g1">
+        <af:commandButton text="Next" id="cb1" action="next"/>
+        <af:commandButton text="Submit and PPR" id="cb2"/>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="s1"/>
+        </f:facet>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelFormLayout>
+</ui:composition>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="flowContainerPage1">
+    <page>/flowContainerPage1.jsf</page>
+  </view>
+  <view id="flowContainerPage2">
+    <page>/flowContainerPage2.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>adfMenu_flowContainerPage1</from-outcome>
+      <to-activity-id>flowContainerPage1</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>adfMenu_flowContainerPage2</from-outcome>
+      <to-activity-id>flowContainerPage2</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__4">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>root_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__5">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__6">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/root_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

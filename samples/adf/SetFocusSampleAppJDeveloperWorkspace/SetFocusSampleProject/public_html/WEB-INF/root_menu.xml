@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+  <itemNode id="itemNode_flowContainerPage1" label="Go to Page1" action="adfMenu_flowContainerPage1"
+            focusViewId="/flowContainerPage1"/>
+  <itemNode id="itemNode_flowContainerPage2" label="Go to Page2" action="adfMenu_flowContainerPage2"
+            focusViewId="/flowContainerPage2"/>
+</menu>

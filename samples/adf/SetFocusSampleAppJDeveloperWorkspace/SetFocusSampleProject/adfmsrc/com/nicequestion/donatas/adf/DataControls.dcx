@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="11.1.2.60.81" id="DataControls"
+                    Package="com.nicequestion.donatas.adf">
+  <AdapterDataControl id="Person" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="com.nicequestion.donatas.adf.Person"
+                      BeanClass="com.nicequestion.donatas.adf.Person" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.nicequestion.donatas.adf.Person"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.nicequestion.donatas.adf.Person"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

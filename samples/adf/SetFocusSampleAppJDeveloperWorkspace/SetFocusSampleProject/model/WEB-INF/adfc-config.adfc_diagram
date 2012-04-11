@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">flowContainerPage1</property>
+      <property
+         name="page">/flowContainerPage1.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>flowContainerPage1&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">98.390625</property>
+      <property
+         name="x">526.0</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">flowContainerPage2</property>
+      <property
+         name="page">/flowContainerPage2.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>flowContainerPage2&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">277.68945</property>
+      <property
+         name="x">524.0</property>
+   </View>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule4">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">179.29883</property>
+      <property
+         name="x">269.0</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="WildcardControlFlowRule4"
+      to="View2">
+      <property
+         name="fromOutcome">adfMenu_flowContainerPage1</property>
+      <property
+         name="sdm:polyPoints">R45,305.0,175.94824,485.0,98.04004,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="WildcardControlFlowRule4"
+      to="View3">
+      <property
+         name="fromOutcome">adfMenu_flowContainerPage2</property>
+      <property
+         name="sdm:polyPoints">R55,305.0,182.94824,483.0,277.33887,L50</property>
+   </ControlFlowCase>
+</SDM>

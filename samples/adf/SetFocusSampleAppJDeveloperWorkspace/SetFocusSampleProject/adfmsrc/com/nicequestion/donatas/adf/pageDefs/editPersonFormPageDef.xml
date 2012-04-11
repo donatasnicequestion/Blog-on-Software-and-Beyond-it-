@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81" id="editPersonFormPageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="Person" id="PersonIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PersonIterator" id="firstName">
+      <AttrNames>
+        <Item Value="firstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PersonIterator" id="lastName">
+      <AttrNames>
+        <Item Value="lastName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

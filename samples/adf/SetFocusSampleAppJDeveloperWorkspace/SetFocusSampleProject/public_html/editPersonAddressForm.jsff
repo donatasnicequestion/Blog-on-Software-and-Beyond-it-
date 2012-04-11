@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:adfExt="http://donatas.nicequestion.com/adf/extentions">
+  <af:panelFormLayout id="pfl1">
+    <f:facet name="footer">
+      <af:commandButton text="Back" id="cb1" action="back"/>
+    </f:facet>
+    <af:inputText value="#{bindings.address.inputValue}" label="#{bindings.address.hints.label}"
+                  required="#{bindings.address.hints.mandatory}" columns="#{bindings.address.hints.displayWidth}"
+                  maximumLength="#{bindings.address.hints.precision}" shortDesc="#{bindings.address.hints.tooltip}"
+                  id="it1" readOnly="true">
+      <f:validator binding="#{bindings.address.validator}"/>
+      <adfExt:setInitialFocus/>
+    </af:inputText>
+    <af:inputText value="#{bindings.city.inputValue}" label="#{bindings.city.hints.label}"
+                  required="#{bindings.city.hints.mandatory}" columns="#{bindings.city.hints.displayWidth}"
+                  maximumLength="#{bindings.city.hints.precision}" shortDesc="#{bindings.city.hints.tooltip}" id="it2">
+      <f:validator binding="#{bindings.city.validator}"/>
+      <adfExt:setInitialFocus/>
+    </af:inputText>
+  </af:panelFormLayout>
+</ui:composition>
