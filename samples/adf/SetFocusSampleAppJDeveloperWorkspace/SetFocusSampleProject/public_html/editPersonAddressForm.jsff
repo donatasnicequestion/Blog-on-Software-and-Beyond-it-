@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
                 xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:adfExt="http://donatas.nicequestion.com/adf/extentions">
+                xmlns:adfExt="http://donatas.nicequestion.com/adf/extensions">
   <af:panelFormLayout id="pfl1">
     <f:facet name="footer">
       <af:commandButton text="Back" id="cb1" action="back"/>

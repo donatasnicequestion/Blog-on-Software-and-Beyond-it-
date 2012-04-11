@@ -436,12 +436,12 @@
             <value n="version" v="1.1"/>
          </hash>
          <hash>
-            <value n="name" v="ADF Extentions"/>
+            <value n="name" v="ADF Extensions"/>
             <value n="prefix" v="adfExt"/>
             <value n="runInEditor" v="false"/>
             <value n="showInPalette" v="true"/>
             <value n="taglibURL" v="WEB-INF/resources/adfExt.taglib.xml"/>
-            <value n="URI" v="http://donatas.nicequestion.com/adf/extentions"/>
+            <value n="URI" v="http://donatas.nicequestion.com/adf/extensions"/>
             <value n="version" v="2.0"/>
          </hash>
       </list>
