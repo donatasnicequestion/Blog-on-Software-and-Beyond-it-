@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+  <af:panelHeader text="New User Registration Form" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:messages id="m1" inline="true"/>
+    <af:panelFormLayout id="pfl1">
+      <af:inputText label="Choose Username" id="it1" value="#{userBean.username}"/>
+      <af:inputText label="and Password" id="it2" value="#{userBean.password}"/>      
+      <f:facet name="footer">
+        <af:group id="g1">
+          <af:panelGroupLayout id="pgl1">
+            <af:commandButton text="Submit registration" id="cb1" action="submitRegistration"/>
+            <af:commandButton text="No, i want to go home" id="cb2" action="home"/>
+          </af:panelGroupLayout>
+        </af:group>
+      </f:facet>      
+    </af:panelFormLayout>
+  </af:panelHeader>
+</ui:composition>

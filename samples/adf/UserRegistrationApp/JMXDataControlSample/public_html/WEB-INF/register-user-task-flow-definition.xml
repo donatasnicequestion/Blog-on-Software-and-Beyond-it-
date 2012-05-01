@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="register-user-task-flow-definition">
+    <default-activity>userRegistrationForm</default-activity>
+    <view id="userRegistrationForm">
+      <page>/userRegistrationForm.jsff</page>
+    </view>
+    <parent-action id="home">
+      <parent-outcome>home</parent-outcome>
+    </parent-action>
+    <view id="success">
+      <page>/success.jsff</page>
+    </view>
+    <method-call id="createUser">
+      <method>#{bindings.createUser.execute}</method>
+      <outcome>
+        <fixed-outcome>createUser</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>home</from-outcome>
+        <to-activity-id>home</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>userRegistrationForm</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>submitRegistration</from-outcome>
+        <to-activity-id>createUser</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>createUser</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>createUser</from-outcome>
+        <to-activity-id>success</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

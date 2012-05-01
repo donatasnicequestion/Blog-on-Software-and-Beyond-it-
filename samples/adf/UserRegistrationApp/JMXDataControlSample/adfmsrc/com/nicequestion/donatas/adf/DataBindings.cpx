@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.60.81" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.nicequestion.donatas.adf" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/registerUser.jsf" usageId="com_nicequestion_donatas_adf_registerUserPageDef"/>
+    <page path="/protected.jsf" usageId="com_nicequestion_donatas_adf_protectedPageDef"/>
+    <page path="/WEB-INF/register-user-task-flow-definition.xml#register-user-task-flow-definition@createUser"
+          usageId="com_nicequestion_donatas_adf_register_user_task_flow_definition_register_user_task_flow_definition_createUserPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_nicequestion_donatas_adf_registerUserPageDef"
+          path="com.nicequestion.donatas.adf.pageDefs.registerUserPageDef"/>
+    <page id="com_nicequestion_donatas_adf_protectedPageDef" path="com.nicequestion.donatas.adf.pageDefs.protectedPageDef"/>
+    <page id="com_nicequestion_donatas_adf_register_user_task_flow_definition_register_user_task_flow_definition_createUserPageDef"
+          path="com.nicequestion.donatas.adf.pageDefs.register_user_task_flow_definition_register_user_task_flow_definition_createUserPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="JMXDataControl1" path="com.nicequestion.donatas.adf.JMXDataControl1"/>    
+  </dataControlUsages>
+</Application>

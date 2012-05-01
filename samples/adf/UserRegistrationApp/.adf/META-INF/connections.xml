@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="localWeblogic" className="oracle.adf.share.connection.jmx.JMXConnection" credentialStoreKey="localWeblogic" xmlns="">
+      <Factory className="oracle.adf.share.connection.jmx.JMXConnectionFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="appserver_type">
+            <Contents>Weblogic</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="user"/>
+         <SecureRefAddr addrType="password"/>
+         <StringRefAddr addrType="host">
+            <Contents>localhost</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>7101</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="protocol">
+            <Contents>t3</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="url_path">
+            <Contents>/jndi/weblogic.management.mbeanservers.domainruntime</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

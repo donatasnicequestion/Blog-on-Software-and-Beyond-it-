@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81" id="registerUserPageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="registerusertaskflowdefinition1"
+              taskFlowId="/WEB-INF/register-user-task-flow-definition.xml#register-user-task-flow-definition"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

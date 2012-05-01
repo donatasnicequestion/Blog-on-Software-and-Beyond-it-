@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81"
+                id="register_user_task_flow_definition_register_user_task_flow_definition_createUserPageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <methodIterator Binds="myrealmDefaultAuthenticator.result" DataControl="JMXDataControl1" RangeSize="25"
+                    BeanClass="myrealmDefaultAuthenticator" id="myrealmDefaultAuthenticatorIterator"/></executables>
+  <bindings>
+    <methodAction id="myrealmDefaultAuthenticator" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="myrealmDefaultAuthenticator" IsViewObjectMethod="false" DataControl="JMXDataControl1"
+                  InstanceName="data.JMXDataControl1"
+                  ReturnName="data.JMXDataControl1.methodResults.myrealmDefaultAuthenticator_JMXDataControl1_myrealmDefaultAuthenticator_result"/>
+    <methodAction IterBinding="myrealmDefaultAuthenticatorIterator" id="createUser" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="createUser" IsViewObjectMethod="false" DataControl="JMXDataControl1"
+                  InstanceName="bindings.myrealmDefaultAuthenticatorIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.JMXDataControl1.methodResults.createUser_createUser_createUser_result">
+      <NamedData NDName="userName" NDValue="#{userBean.username}" NDType="java.lang.String"/>
+      <NamedData NDName="password" NDValue="#{userBean.password}" NDType="java.lang.String"/>
+      <NamedData NDName="description" NDValue="Created by JMX Data Control sample app" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

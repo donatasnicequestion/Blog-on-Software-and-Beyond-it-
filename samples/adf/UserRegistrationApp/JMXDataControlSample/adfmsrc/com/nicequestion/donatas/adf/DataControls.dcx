@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="11.1.2.60.81" id="DataControls"
+                    Package="com.nicequestion.donatas.adf">
+  <AdapterDataControl id="JMXDataControl1" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.jmx.JmxDataControlDef" SupportsTransactions="true"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="true"
+                      SupportsFindMode="true" SupportsUpdates="true"
+                      Definition="oracle.adfinternal.model.adapter.jmx.JmxDataControl"
+                      BeanClass="oracle.adfinternal.model.adapter.jmx.JmxDataControl"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <JMXDCProperties xmlns="http://xmlns.oracle.com/adfm/adapter/jmx"><MBeanServerConnection connectionName="localWeblogic"/><JMXBean displayName="myrealmDefaultAuthenticator"
+                                                                                                                                        objectName="Security:Name=myrealmDefaultAuthenticator,Location=DefaultServer"/></JMXDCProperties>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>
