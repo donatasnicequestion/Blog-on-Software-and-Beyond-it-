@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81" id="showTweetsPageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs">
+  <parameters/>
+  <executables>
+    <methodIterator Binds="loadData.result" DataControl="TwitterTimelineService" RangeSize="25"
+                    BeanClass="com.nicequestion.donatas.adf.TwitterTimelineService.loadData_Data"
+                    id="loadDataIterator"/>
+    <methodIterator Binds="transformTwitterJSONString2Tweets.result" DataControl="ShowTweetsPageAdapter" RangeSize="25"
+                    BeanClass="com.nicequestion.donatas.adf.model.TwitterTimeline"
+                    id="transformTwitterJSONString2TweetsIterator"/>
+    <accessorIterator MasterBinding="transformTwitterJSONString2TweetsIterator" Binds="tweetList" RangeSize="25"
+                      DataControl="ShowTweetsPageAdapter" BeanClass="com.nicequestion.donatas.adf.model.Tweet"
+                      id="tweetListIterator"/>
+    <methodIterator Binds="loadData1.result" DataControl="FeelingAnalyzerService" RangeSize="25"
+                    BeanClass="com.nicequestion.donatas.adf.FeelingAnalyzerService.loadData_Data" id="loadData1Iterator"
+                    Refresh="always"/>
+  </executables>
+  <bindings>
+    <methodAction id="loadData" RequiresUpdateModel="true" Action="invokeMethod" MethodName="loadData"
+                  IsViewObjectMethod="false" DataControl="TwitterTimelineService"
+                  InstanceName="data.TwitterTimelineService"
+                  ReturnName="data.TwitterTimelineService.methodResults.loadData_TwitterTimelineService_loadData_result">
+      <NamedData NDName="ScreenName" NDValue="#{pageFlowScope.ScreenName}" NDType="java.lang.String"/>
+    </methodAction>                 
+    <attributeValues IterBinding="loadDataIterator" id="Column0">
+      <AttrNames>
+        <Item Value="Column0"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="transformTwitterJSONString2Tweets" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="transformTwitterJSONString2Tweets" IsViewObjectMethod="false"
+                  DataControl="ShowTweetsPageAdapter" InstanceName="data.ShowTweetsPageAdapter.dataProvider"
+                  ReturnName="data.ShowTweetsPageAdapter.methodResults.transformTwitterJSONString2Tweets_ShowTweetsPageAdapter_dataProvider_transformTwitterJSONString2Tweets_result">
+      <NamedData NDName="tweetsJsonString" NDValue="#{bindings.Column0.inputValue}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="tweetListIterator" id="tweetList">
+      <nodeDefinition DefName="com.nicequestion.donatas.adf.model.Tweet" Name="tweetList0">
+        <AttrNames>
+          <Item Value="date"/>
+          <Item Value="message"/>
+          <Item Value="feeling"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="loadData1" RequiresUpdateModel="true" Action="invokeMethod" MethodName="loadData"
+                  IsViewObjectMethod="false" DataControl="FeelingAnalyzerService"
+                  InstanceName="data.FeelingAnalyzerService"
+                  ReturnName="data.FeelingAnalyzerService.methodResults.loadData_FeelingAnalyzerService_loadData_result">
+      <NamedData NDName="Text" NDValue="#{bindings.tweetListIterator.currentRow.dataProvider.message}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="loadData1Iterator" id="Column1">
+      <AttrNames>
+        <Item Value="Column0"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

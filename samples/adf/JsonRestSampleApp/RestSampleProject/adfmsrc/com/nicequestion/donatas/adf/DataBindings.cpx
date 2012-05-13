@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.60.81" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.nicequestion.donatas.adf" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/showTweets.jsff" usageId="com_nicequestion_donatas_adf_showTweetsPageDef"/>
+    <page path="/home.jsf" usageId="com_nicequestion_donatas_adf_homePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_nicequestion_donatas_adf_showTweetsPageDef"
+          path="com.nicequestion.donatas.adf.pageDefs.showTweetsPageDef"/>
+    <page id="com_nicequestion_donatas_adf_homePageDef"
+          path="com.nicequestion.donatas.adf.pageDefs.homePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="FeelingAnalyzerService" path="com.nicequestion.donatas.adf.FeelingAnalyzerService"/>
+    <dc id="ShowTweetsPageAdapter" path="com.nicequestion.donatas.adf.ShowTweetsPageAdapter"/>
+    <dc id="TwitterTimelineService" path="com.nicequestion.donatas.adf.TwitterTimelineService"/>    
+  </dataControlUsages>
+</Application>

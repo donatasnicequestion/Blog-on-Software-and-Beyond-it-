@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="11.1.2.60.81" id="DataControls"
+                    Package="com.nicequestion.donatas.adf">
+  <AdapterDataControl id="ShowTweetsPageAdapter" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.nicequestion.donatas.adf.model.ShowTweetsPageAdapter"
+                      BeanClass="com.nicequestion.donatas.adf.model.ShowTweetsPageAdapter"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.nicequestion.donatas.adf.model.Tweet"/>
+      <TypeInfo FullName="com.nicequestion.donatas.adf.model.ShowTweetsPageAdapter"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.nicequestion.donatas.adf.model.ShowTweetsPageAdapter"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="TwitterTimelineService" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.url.csv.CSVDCDef" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="false"
+                      Definition="com.nicequestion.donatas.adf.TwitterTimelineService"
+                      BeanClass="com.nicequestion.donatas.adf.TwitterTimelineService"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <Definition xmlns="http://xmlns.oracle.com/adfm/adapter/url/csv" ConnectionName="TwitterApiConnection"
+                  Source="statuses/user_timeline.json?screen_name=##ScreenName##" Delimiter="{tab}" QuoteChar="{none}"
+                  IsFirstRowNames="false" Encoding="UTF-8" UsePersistedStructure="false" HttpMethod="GET">
+         <Parameters>
+          <Parameter Name="ScreenName" Value="adf_emg"/>
+        </Parameters>
+      </Definition>  
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="FeelingAnalyzerService" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.url.csv.CSVDCDef" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="false"
+                      Definition="com.nicequestion.donatas.adf.FeelingAnalyzerService"
+                      BeanClass="com.nicequestion.donatas.adf.FeelingAnalyzerService"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <Definition xmlns="http://xmlns.oracle.com/adfm/adapter/url/csv" ConnectionName="FeelingAnalyzerApp"
+                  Source="feeling_analyzer/feeling?text=##Text##&amp;key=AJJj7d98987hhsbJASLDG5" Delimiter="{tab}"
+                  QuoteChar="{none}" IsFirstRowNames="false" Encoding="UTF-8" UsePersistedStructure="false"
+                  HttpMethod="GET">
+        <Parameters>
+          <Parameter Name="Text" Value="i feel good test"/>
+        </Parameters>
+      </Definition>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

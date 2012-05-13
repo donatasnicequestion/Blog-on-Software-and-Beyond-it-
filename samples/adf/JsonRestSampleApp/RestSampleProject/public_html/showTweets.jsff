@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelSplitter id="ps2" positionedFromEnd="true" splitterPosition="80" orientation="vertical">
+    <f:facet name="first">
+      <af:panelSplitter id="ps1" positionedFromEnd="true">
+        <f:facet name="first">
+          <af:panelHeader text="@#{pageFlowScope.ScreenName}" id="ph1" inlineStyle="margin: 0px 10px 10px 0px;">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:decorativeBox id="db2">
+              <f:facet name="center">
+                <af:table value="#{bindings.tweetList.collectionModel}" var="row" rows="#{bindings.tweetList.rangeSize}"
+                          emptyText="#{bindings.tweetList.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.tweetList.rangeSize}" rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.tweetList.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.tweetList.collectionModel.makeCurrent}" rowSelection="single"
+                          id="t1" columnStretching="last">
+                  <af:column sortProperty="#{bindings.tweetList.hints.feeling.name}" sortable="false"
+                             headerText="Emotion" id="c3" rendered="true" width="50" align="center"
+                             inlineStyle="color:White; #{row.feeling == 4 ? 'background-color:Green;' : row.feeling == 0 ? 'background-color:Red;' : '' }"
+                             displayIndex="-1">
+                    <af:outputText value="#{row.feeling == 4 ? ':)' : row.feeling == 0 ? ':(' : ':|' }" id="ot5"
+                                   inlineStyle="#{row.feeling == 2 ? 'color:Gray;' : 'color:White;' } font-weight:bold;">
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.tweetList.hints.feeling.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.tweetList.hints.date.name}" sortable="false" headerText="Date"
+                             id="c1" align="center">
+                    <af:outputText value="#{row.date}" id="ot2">
+                      <af:convertDateTime pattern="#{bindings.tweetList.hints.date.format}" type="both" locale="en"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.tweetList.hints.message.name}" sortable="false"
+                             headerText="Message" id="c2" width="66" noWrap="false">
+                    <af:panelGroupLayout id="pgl3" layout="vertical">
+                      <af:spacer width="10" height="5" id="s2"/>
+                      <af:outputText value="#{row.message}" id="ot3"
+                                     inlineStyle="#{row.feeling == 4 ? 'color:Green;' : row.feeling == 0 ? 'color:Red;' : '' }"/>
+                      <af:spacer width="10" height="5" id="s1"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                </af:table>
+              </f:facet>
+              <f:facet name="top"/>
+            </af:decorativeBox>
+          </af:panelHeader>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelHeader text="Twitter Timeline Service" id="ph2" inlineStyle="margin: 0px 0px 10px 0px;">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:decorativeBox id="db1">
+              <f:facet name="center">
+                <af:panelGroupLayout id="pgl2" layout="scroll">
+                  <af:outputLabel value="Response (JSON)" id="ol1"/>
+                  <af:outputText value="#{bindings.Column0.inputValue}" id="ot1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="top"/>
+            </af:decorativeBox>
+          </af:panelHeader>
+        </f:facet>
+      </af:panelSplitter>
+    </f:facet>
+    <f:facet name="second">
+      <af:decorativeBox id="db3">
+        <f:facet name="center">
+          <af:panelHeader text="Emotion Analyzer Service" id="ph3">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer"/>
+              <af:panelLabelAndMessage label=" Response (JSON)" id="plam2" partialTriggers="t1">
+                <af:outputText value="#{bindings.Column1.inputValue}" id="ot4"/>
+              </af:panelLabelAndMessage>
+            </af:panelFormLayout>
+          </af:panelHeader>
+        </f:facet>
+        <f:facet name="top"/>
+      </af:decorativeBox>
+    </f:facet>
+  </af:panelSplitter>
+</ui:composition>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81" id="homePageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="tweetstaskflowdefinition1"
+              taskFlowId="/WEB-INF/tweets-task-flow-definition.xml#tweets-task-flow-definition" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding" Refresh="ifNeeded">
+      <parameters>
+        <parameter id="ScreenName" value="#{twitterTimeline.screenName}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

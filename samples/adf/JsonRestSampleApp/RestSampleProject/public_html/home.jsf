@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="home.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelSplitter id="ps1" orientation="vertical" splitterPosition="80">
+                <f:facet name="first">
+                    <af:decorativeBox id="db1" inlineStyle="margin:10px 10px 0px 10px;">
+                        <f:facet name="center">
+                            <af:panelHeader text="Show Twitter timeline for:" id="ph1">
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="legend"/>
+                                <f:facet name="info"/>
+                                <af:panelFormLayout id="pfl1" rows="1">
+                                    <f:facet name="footer"/>
+                                    <af:inputText label="User name: @" id="it1" value="#{twitterTimeline.screenName}"/>
+                                    <af:commandButton text="Show Tweets" id="cb1"/>
+                                </af:panelFormLayout>
+                            </af:panelHeader>
+                        </f:facet>
+                        <f:facet name="top"/>
+                    </af:decorativeBox>
+                </f:facet>
+                <f:facet name="second">
+                    <af:region value="#{bindings.tweetstaskflowdefinition1.regionModel}" id="r1"
+                               partialTriggers="::cb1" inlineStyle="margin:0px 10px 10px 10px;"/>
+                </f:facet>
+            </af:panelSplitter>
+        </af:form>
+    </af:document>
+</f:view>

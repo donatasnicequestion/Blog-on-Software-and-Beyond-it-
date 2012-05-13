@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="FeelingAnalyzerApp" className="oracle.adf.model.connection.url.HttpURLConnection" xmlns="">
+      <Factory className="oracle.adf.model.connection.url.URLConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="FeelingAnalyzerApp">
+            <Contents>
+               <urlconnection name="FeelingAnalyzerApp" url="http://feeling-analyzer.appspot.com/"/>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="TwitterApiConnection" className="oracle.adf.model.connection.url.HttpURLConnection" xmlns="">
+      <Factory className="oracle.adf.model.connection.url.URLConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="TwitterApiConnection">
+            <Contents>
+               <urlconnection name="TwitterApiConnection" url="http://api.twitter.com/"/>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>
