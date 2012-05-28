@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelHeader text="Second page: Managed Bean value binding " id="ph1">
+        <af:panelFormLayout id="pfl1">
+            <af:inputText label="Sample value" id="it1" 
+                          value="#{pageFlowScope.flowController.sampleValue}"/>
+            <f:facet name="footer">
+                <af:commandButton text="Go back to the first page" id="cb1" action="back"/>
+            </f:facet>
+        </af:panelFormLayout>
+    </af:panelHeader>
+</ui:composition>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="sample-task-flow-definition">
+    <default-activity>first</default-activity>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__7">
+      <managed-bean-name>flowController</managed-bean-name>
+      <managed-bean-class>com.nicequestion.donatas.controller.SampleFlowController</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="first">
+      <page>/first.jsff</page>
+    </view>
+    <view id="second">
+      <page>/second.jsff</page>
+    </view>
+    <method-call id="doSomethingUseful">
+      <method>#{bindings.doSomethingUseful.execute}</method>
+      <outcome>
+        <fixed-outcome>doSomethingUseful</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__4">
+      <from-activity-id>second</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>first</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>first</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>next</from-outcome>
+        <to-activity-id>doSomethingUseful</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>doSomethingUseful</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>doSomethingUseful</from-outcome>
+        <to-activity-id>second</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

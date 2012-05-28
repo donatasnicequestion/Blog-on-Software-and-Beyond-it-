@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.61.83" id="firstPageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs">
+  <parameters/>
+  <executables>
+    <iterator Binds="root" RangeSize="25" DataControl="DataControls" id="SampleFlowDataControlIterator"/>
+    <accessorIterator MasterBinding="SampleFlowDataControlIterator" Binds="flowController" RangeSize="25"
+                      DataControl="DataControls" BeanClass="com.nicequestion.donatas.controller.SampleFlowController"
+                      id="flowControllerIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="flowControllerIterator" id="sampleValue">
+      <AttrNames>
+        <Item Value="sampleValue"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

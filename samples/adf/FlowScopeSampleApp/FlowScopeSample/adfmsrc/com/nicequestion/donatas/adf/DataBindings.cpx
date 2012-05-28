@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.61.83" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.nicequestion.donatas.adf" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/first.jsff" usageId="com_nicequestion_donatas_adf_firstPageDef"/>    
+    <page path="/home.jsf" usageId="com_nicequestion_donatas_adf_homePageDef"/>
+    <page path="/WEB-INF/sample-task-flow-definition.xml#sample-task-flow-definition@doSomethingUseful"
+          usageId="com_nicequestion_donatas_adf_sample_task_flow_definition_sample_task_flow_definition_doSomethingUsefulPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_nicequestion_donatas_adf_firstPageDef" path="com.nicequestion.donatas.adf.pageDefs.firstPageDef"/>    
+    <page id="com_nicequestion_donatas_adf_homePageDef" path="com.nicequestion.donatas.adf.pageDefs.homePageDef"/>
+    <page id="com_nicequestion_donatas_adf_sample_task_flow_definition_sample_task_flow_definition_doSomethingUsefulPageDef"
+          path="com.nicequestion.donatas.adf.pageDefs.sample_task_flow_definition_sample_task_flow_definition_doSomethingUsefulPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="DataControls" path="com.nicequestion.donatas.adf.SampleFlowDataControl"/>
+  </dataControlUsages>
+</Application>

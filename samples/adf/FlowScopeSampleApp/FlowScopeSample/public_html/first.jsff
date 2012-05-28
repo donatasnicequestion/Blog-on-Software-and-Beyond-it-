@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="First page: ADF Data Control value binding " id="ph1">
+    <af:panelFormLayout id="pfl1">
+      <f:facet name="footer">
+        <af:commandButton text="Got to the next page and perform something useful" id="cb1" action="next"/>
+      </f:facet>
+      <af:inputText value="#{bindings.sampleValue.inputValue}" 
+                    label="#{bindings.sampleValue.hints.label}"
+                    required="#{bindings.sampleValue.hints.mandatory}"
+                    columns="#{bindings.sampleValue.hints.displayWidth}"
+                    maximumLength="#{bindings.sampleValue.hints.precision}"
+                    shortDesc="#{bindings.sampleValue.hints.tooltip}" id="it1">
+        <f:validator binding="#{bindings.sampleValue.validator}"/>
+      </af:inputText>
+    </af:panelFormLayout>
+  </af:panelHeader>
+</ui:composition>

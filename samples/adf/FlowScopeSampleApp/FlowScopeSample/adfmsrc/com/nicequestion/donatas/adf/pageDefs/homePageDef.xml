@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.61.83" id="homePageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="hrservicetaskflowdefinition1"
+              taskFlowId="/WEB-INF/sample-task-flow-definition.xml#sample-task-flow-definition"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters/>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>
