@@ -21,9 +21,9 @@ import oracle.adf.view.rich.context.AdfFacesContext;
 public abstract class FlowScopedDataControlBase<T> {
     
     /** Name of the flow controller bean  */
-    public static final String FOW_CONTROLLER_BEAN = "flowController";
+    public static final String FLOW_CONTROLLER_BEAN = "flowController";
         
     public T getFlowController() {
-        return (T)AdfFacesContext.getCurrentInstance().getPageFlowScope().get(FOW_CONTROLLER_BEAN);        
+        return (T)AdfFacesContext.getCurrentInstance().getPageFlowScope().get(FLOW_CONTROLLER_BEAN);        
     }       
 }
