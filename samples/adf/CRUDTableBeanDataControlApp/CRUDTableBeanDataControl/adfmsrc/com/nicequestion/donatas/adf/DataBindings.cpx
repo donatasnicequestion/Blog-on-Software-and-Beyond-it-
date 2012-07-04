@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.61.83" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.nicequestion.donatas.adf" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/editPersonList.jsff" usageId="com_nicequestion_donatas_adf_editPersonListPageDef"/>
+    <page path="/home.jsf" usageId="com_nicequestion_donatas_adf_homePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_nicequestion_donatas_adf_editPersonListPageDef"
+          path="com.nicequestion.donatas.adf.pageDefs.editPersonListPageDef"/>
+    <page id="com_nicequestion_donatas_adf_homePageDef" path="com.nicequestion.donatas.adf.pageDefs.homePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="CRUDPersonsTaskFlowDataControl" path="com.nicequestion.donatas.adf.CRUDPersonsTaskFlowDataControl"/>
+  </dataControlUsages>
+</Application>
