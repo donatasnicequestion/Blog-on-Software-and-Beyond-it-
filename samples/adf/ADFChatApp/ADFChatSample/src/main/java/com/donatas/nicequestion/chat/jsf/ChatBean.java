@@ -1,4 +1,4 @@
-package adstest;
+package com.nicequestion.donatas.chat.jsf;
 
 import com.nicequestion.donatas.chat.model.Chat;
 
