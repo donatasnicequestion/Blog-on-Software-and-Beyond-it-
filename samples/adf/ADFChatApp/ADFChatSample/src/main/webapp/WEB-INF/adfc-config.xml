@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="login">
+    <page>/login.jsf</page>
+  </view>
+  <view id="chat">
+    <page>/chat.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>login</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>chat</from-outcome>
+      <to-activity-id>chat</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__3">
+    <from-activity-id>chat</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>logout</from-outcome>
+      <to-activity-id>login</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+</adfc-config>

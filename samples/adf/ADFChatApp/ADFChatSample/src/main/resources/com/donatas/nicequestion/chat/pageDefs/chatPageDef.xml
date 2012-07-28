@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.61.83" id="chatPageDef"
+                Package="com.donatas.nicequestion.chat.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="chattaskflowdefinition1"
+              taskFlowId="/WEB-INF/chat/chat-task-flow-definition.xml#chat-task-flow-definition" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="username" value="#{requestScope.username}"/>
+        <parameter id="activeOutputVisible" value="#{requestScope.activeOutputVisible}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

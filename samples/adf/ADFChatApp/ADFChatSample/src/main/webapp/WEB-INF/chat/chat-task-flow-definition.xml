@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="chat-task-flow-definition">
+    <default-activity>chat</default-activity>
+    <input-parameter-definition id="__3">
+      <name>username</name>
+      <value>#{pageFlowScope.username}</value>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>activeOutputVisible</name>
+      <value>#{pageFlowScope.activeOutputVisible}</value>
+    </input-parameter-definition>
+    <finalizer>#{chatListenerBean.finalizer}</finalizer>
+    <view id="chat">
+      <page>/WEB-INF/chat/chat.jsff</page>
+    </view>
+    <parent-action id="logout">
+      <parent-outcome>logout</parent-outcome>
+    </parent-action>
+    <control-flow-rule id="__1">
+      <from-activity-id>chat</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>logout</from-outcome>
+        <to-activity-id>logout</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

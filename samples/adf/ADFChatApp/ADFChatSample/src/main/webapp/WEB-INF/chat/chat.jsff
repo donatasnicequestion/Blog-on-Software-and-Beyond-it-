@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" bottomHeight="auto" topHeight="auto" endWidth="120px">
+    <f:facet name="bottom">
+      <af:decorativeBox id="db2" inlineStyle="margin:0px 10px 10px 10px ;" dimensionsFrom="children">
+        <f:facet name="center">
+          <af:subform id="s2" defaultCommand="cb1">
+            <af:panelGroupLayout layout="horizontal" id="pgl1">
+              <af:inputText label="Message from #{chatListenerBean.username}" id="it1" clientComponent="true"
+                            value="#{chatListenerBean.message}" partialTriggers="cb1"/>
+              <af:commandButton text="Send" id="cb1" partialSubmit="true"/>
+              <af:commandButton text="Logout" id="cb2" action="logout"/>
+              <f:facet name="separator">
+                <af:spacer width="10" height="10" id="s1"/>
+              </f:facet>
+            </af:panelGroupLayout>
+          </af:subform>
+        </f:facet>
+        <f:facet name="top"/>
+      </af:decorativeBox>
+    </f:facet>
+    <f:facet name="center">
+      <af:decorativeBox id="db1" inlineStyle="margin:10px;">
+        <f:facet name="center">
+          <af:table value="#{chatBean.messages}" var="row" rowBandingInterval="0" id="t1" clientComponent="true"
+                    contentDelivery="immediate" displayRow="last" columnStretching="last" horizontalGridVisible="false"
+                    verticalGridVisible="false">
+            <af:column sortable="false" align="start" id="c2" noWrap="false">
+              <af:outputText value="#{row}" id="ot2"/>
+            </af:column>
+          </af:table>
+        </f:facet>
+        <f:facet name="top"/>
+      </af:decorativeBox>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end">
+      
+        <af:decorativeBox id="db3" inlineStyle="margin:10px 10px 10px 0px ;">
+          <f:facet name="center">
+            <af:table value="#{chatBean.users}" var="row" rowBandingInterval="0" id="t2" clientComponent="true"
+                      contentDelivery="immediate" displayRow="last" columnStretching="last"
+                      horizontalGridVisible="false" verticalGridVisible="false">
+              <af:column sortable="false" align="start" id="c3" noWrap="false" width="60">
+                <af:outputText value="#{row}" id="ot3"/>
+              </af:column>
+            </af:table>
+          </f:facet>
+          <f:facet name="top"/>
+        </af:decorativeBox>      
+    </f:facet>
+    <f:facet name="top">
+    <af:panelHeader text="Welcome to ADF active Chat" id="ph1" inlineStyle="margin:10px 10px 0px 10px;">
+                <f:facet name="context"/>
+                <f:facet name="menuBar"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="legend"/>
+                <f:facet name="info"/>
+        <af:panelLabelAndMessage label="Active output:" id="plam1" visible="#{pageFlowScope.activeOutputVisible == null ? true : pageFlowScope.activeOutputVisible}">
+          <f:ajax event="propertyChange" onevent="function(e) {}" render="t1 t2 ot1">
+            <af:activeOutputText value="#{chatListenerBean.message}" id="aot1">
+              <f:ajax/>
+            </af:activeOutputText>
+          </f:ajax>
+          <af:outputText value=" Alive:#{chatListenerBean.pong}" id="ot1" clientComponent="true"/>
+        </af:panelLabelAndMessage>
+      </af:panelHeader>  
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>
