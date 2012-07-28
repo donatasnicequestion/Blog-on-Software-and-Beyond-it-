@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.61.83" id="editPersonListPageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs">
+  <parameters/>
+  <executables>
+    <iterator Binds="root" RangeSize="25" DataControl="CRUDPersonsTaskFlowDataControl"
+              id="CRUDPersonsTaskFlowDataControlIterator"/>
+    <accessorIterator MasterBinding="CRUDPersonsTaskFlowDataControlIterator" Binds="flowController" RangeSize="25"
+                      DataControl="CRUDPersonsTaskFlowDataControl"
+                      BeanClass="com.nicequestion.donatas.adf.controller.CRUDPersonsTaskFlowController"
+                      id="flowControllerIterator"/>
+    <accessorIterator MasterBinding="flowControllerIterator" Binds="personList" RangeSize="25"
+                      DataControl="CRUDPersonsTaskFlowDataControl" BeanClass="com.nicequestion.donatas.model.Person"
+                      id="personListIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="personListIterator" id="personList">
+      <nodeDefinition DefName="com.nicequestion.donatas.model.Person" Name="personList0">
+        <AttrNames>
+          <Item Value="number"/>
+          <Item Value="firstName"/>
+          <Item Value="lastName"/>
+          <Item Value="birthday"/>
+        </AttrNames>
+        <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent"/>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="personListIterator" id="Create" RequiresUpdateModel="true" Action="createRow"/>
+    <action IterBinding="personListIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction IterBinding="flowControllerIterator" id="copyPerson" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="copyPerson" IsViewObjectMethod="false" DataControl="CRUDPersonsTaskFlowDataControl"
+                  InstanceName="bindings.flowControllerIterator.currentRow.dataProvider" IsLocalObjectReference="true">
+      <NamedData NDName="person" NDValue="#{bindings.personListIterator.currentRow.dataProvider}"
+                 NDType="com.nicequestion.donatas.model.Person"/>
+      <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+        <event name="copyPersonEvent"/>
+      </events>
+    </methodAction>
+    <action IterBinding="personListIterator" id="Execute"
+            InstanceName="com.nicequestion.donatas.adf.controller.CRUDPersonsTaskFlowController.personList"
+            DataControl="CRUDPersonsTaskFlowDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="personListIterator" id="Last"
+            InstanceName="com.nicequestion.donatas.adf.controller.CRUDPersonsTaskFlowController.personList"
+            DataControl="CRUDPersonsTaskFlowDataControl" RequiresUpdateModel="true" Action="last"/>
+  </bindings>
+  <eventMap xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+    <event name="copyPersonEvent">
+      <producer region="*">
+        <consumer region="" handler="Execute"/>
+        <consumer region="" handler="Last"/>
+      </producer>
+    </event>
+  </eventMap>
+</pageDefinition>

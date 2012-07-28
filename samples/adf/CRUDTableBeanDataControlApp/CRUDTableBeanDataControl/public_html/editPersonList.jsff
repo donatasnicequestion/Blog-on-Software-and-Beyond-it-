@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="Persons" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelCollection id="pc1">
+      <f:facet name="menus"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t2">
+          <af:commandButton actionListener="#{bindings.Create.execute}" text="Create"
+                            disabled="#{!bindings.Create.enabled}" id="cb1" partialSubmit="true"/>
+          <af:commandButton actionListener="#{bindings.Delete.execute}" text="Delete"
+                            disabled="#{!bindings.Delete.enabled}" id="cb2" partialSubmit="true"/>
+          <af:commandButton text="Copy selected person" disabled="#{!bindings.copyPerson.enabled} )" id="cb3"
+                            actionListener="#{bindings.copyPerson.execute}" partialSubmit="true"
+                            inlineStyle="font-weight:bold;"/>
+          <af:commandButton text="Submit" id="cb4" partialSubmit="true"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="statusbar">
+        <af:toolbar id="t3">
+          <af:group id="g1">
+            <af:panelLabelAndMessage label="Selected person:" id="plam1">
+              <af:outputText value="#{bindings.personListIterator.currentRow.dataProvider.number}" id="ot1"
+                             partialTriggers="t1"/>
+            </af:panelLabelAndMessage>
+          </af:group>
+        </af:toolbar>
+      </f:facet>        
+      <af:table value="#{bindings.personList.collectionModel}" var="row" rows="#{bindings.personList.rangeSize}"
+                emptyText="#{bindings.personList.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.personList.rangeSize}" rowBandingInterval="0"
+                selectedRowKeys="#{bindings.personList.collectionModel.selectedRow}"
+                selectionListener="#{bindings.personList.collectionModel.makeCurrent}" rowSelection="single" id="t1"
+                partialTriggers="::cb1 ::cb2 ::cb3 ::cb4">
+        <af:column sortProperty="#{bindings.personList.hints.number.name}" sortable="true"
+                   headerText="#{bindings.personList.hints.number.label}" id="c1">
+          <af:inputText value="#{row.bindings.number.inputValue}" label="#{bindings.personList.hints.number.label}"
+                        required="#{bindings.personList.hints.number.mandatory}"
+                        columns="#{bindings.personList.hints.number.displayWidth}"
+                        maximumLength="#{bindings.personList.hints.number.precision}"
+                        shortDesc="#{bindings.personList.hints.number.tooltip}" id="it1">
+            <f:validator binding="#{row.bindings.number.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.personList.hints.number.format}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.personList.hints.firstName.name}" sortable="true"
+                   headerText="#{bindings.personList.hints.firstName.label}" id="c2">
+          <af:inputText value="#{row.bindings.firstName.inputValue}"
+                        label="#{bindings.personList.hints.firstName.label}"
+                        required="#{bindings.personList.hints.firstName.mandatory}"
+                        columns="#{bindings.personList.hints.firstName.displayWidth}"
+                        maximumLength="#{bindings.personList.hints.firstName.precision}"
+                        shortDesc="#{bindings.personList.hints.firstName.tooltip}" id="it2">
+            <f:validator binding="#{row.bindings.firstName.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.personList.hints.lastName.name}" sortable="true"
+                   headerText="#{bindings.personList.hints.lastName.label}" id="c3">
+          <af:inputText value="#{row.bindings.lastName.inputValue}" label="#{bindings.personList.hints.lastName.label}"
+                        required="#{bindings.personList.hints.lastName.mandatory}"
+                        columns="#{bindings.personList.hints.lastName.displayWidth}"
+                        maximumLength="#{bindings.personList.hints.lastName.precision}"
+                        shortDesc="#{bindings.personList.hints.lastName.tooltip}" id="it3">
+            <f:validator binding="#{row.bindings.lastName.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.personList.hints.birthday.name}" sortable="true"
+                   headerText="#{bindings.personList.hints.birthday.label}" id="c4">
+          <af:inputDate value="#{row.bindings.birthday.inputValue}" label="#{bindings.personList.hints.birthday.label}"
+                        required="#{bindings.personList.hints.birthday.mandatory}"
+                        columns="#{bindings.personList.hints.birthday.displayWidth}"
+                        shortDesc="#{bindings.personList.hints.birthday.tooltip}" id="id1">
+            <f:validator binding="#{row.bindings.birthday.validator}"/>
+            <af:convertDateTime pattern="#{bindings.personList.hints.birthday.format}"/>
+          </af:inputDate>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+  </af:panelHeader>
+</ui:composition>
