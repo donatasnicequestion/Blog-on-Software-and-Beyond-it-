@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="main-task-flow-definition">
+    <default-activity>main1</default-activity>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <view id="main1">
+      <page>/main1.jsff</page>
+    </view>
+    <view id="main2">
+      <page>/main2.jsff</page>
+    </view>
+    <task-flow-call id="utilityFlowCall">
+      <dynamic-task-flow-reference>#{utilityFlowReference.flowId}</dynamic-task-flow-reference>
+      <input-parameter id="__8">
+        <name>inputParameter</name>
+        <value>#{pageFlowScope.mainTaskFlowValue}</value>
+      </input-parameter>
+      <return-value id="__9">
+        <name>returnValue</name>
+        <value>#{pageFlowScope.mainTaskFlowValue}</value>
+      </return-value>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>main1</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>next</from-outcome>
+        <to-activity-id>utilityFlowCall</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>main2</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>utilityFlowCall</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>utilityFlowCall</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>main1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>next</from-outcome>
+        <to-activity-id>main2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="Utility Task Flow : Page Fragment 1" id="ph1">
+    <af:inputText label="Utility Task Flow Input Parameter" id="it1" value="#{pageFlowScope.inputParameter}"/>
+    <f:facet name="context">
+      <af:outputText value=" (from UtilityTaskFlowADFLib.jar)" id="ot1"/>
+    </f:facet>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:commandButton text="back" id="cb1" action="back">
+      <af:setPropertyListener from="#{pageFlowScope.inputParameter}" to="#{pageFlowScope.returnValue}"
+                              type="action"/>
+    </af:commandButton>
+    <af:commandButton text="next" id="cb2" action="next">
+      <af:setPropertyListener from="#{pageFlowScope.inputParameter}" to="#{pageFlowScope.returnValue}" type="action"/>
+    </af:commandButton>
+  </af:panelHeader>
+</ui:composition>

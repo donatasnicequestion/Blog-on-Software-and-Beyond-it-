@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="Main Task Flow : Page Fragment 1" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:inputText label="Main Task Flow Value" id="it1" value="#{pageFlowScope.mainTaskFlowValue}"/>
+    <af:commandButton text="Next" id="cb1" action="next"/>
+  </af:panelHeader>
+</ui:composition>

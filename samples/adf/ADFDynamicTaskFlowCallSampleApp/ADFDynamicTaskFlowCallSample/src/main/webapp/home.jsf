@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="home.jsf" id="d1">
+        <af:form id="f1">
+            <af:region value="#{bindings.maintaskflowdefinition1.regionModel}" id="r1"/>
+        </af:form>
+    </af:document>
+</f:view>
