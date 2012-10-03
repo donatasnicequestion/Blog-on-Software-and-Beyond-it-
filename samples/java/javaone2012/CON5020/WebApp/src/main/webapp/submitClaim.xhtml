@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"                
+                    template="/templates/template.xhtml">
+        <ui:define name="top">   
+            <h3>Oops. Something went wrong? Report a new Claim!</h3>
+        </ui:define>    
+
+        <ui:define name="content"> 
+            <h2>Your claim is accepted. Thank you for using our service.</h2>
+
+            <fieldset id= "address">
+                <legend>Please use the following for all further inquiries regarding your claim</legend>
+
+                <h:panelGrid columns="2">
+
+                    <h:outputLabel for="personId" value="Customer ID:"/>
+                    <h:outputText id="personId" value="#{ReportClaimProcessController.reportClaimReturn.personActivityReturn.personId}" class="important"/>
+
+                    <h:outputLabel for="claimId" value="Claim ID:"/>
+                    <h:outputText id="claimId" value="#{ReportClaimProcessController.reportClaimReturn.claimActivityReturn.claimId}" class="important"/>
+                                    
+                </h:panelGrid>                               
+            </fieldset>
+            
+            <h:panelGrid columns="2">
+                        <h:commandLink value="Start again" action="identifyPerson"/>            
+            </h:panelGrid>
+        </ui:define>
+
+    </ui:composition>
+
+</html>    

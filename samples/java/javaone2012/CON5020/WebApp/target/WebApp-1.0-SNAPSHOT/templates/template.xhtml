@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="cssLayout.css"/>        
+        <title>JavaOne 2012 | Using JSR 303, Bean Validation, with the Common Data Model in SOA | Donatas Valys</title>
+    </h:head>
+
+    <h:body>
+        <f:view>
+            <h:form>
+
+        <div id="top">
+            <h2><h:link value="Welcome to DWBH Insurance  Inc. Service Portal" outcome="index"/></h2>
+            <ui:insert name="top">
+                <i>Don't Worry Be Happy</i>
+            </ui:insert>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <h4>Processes</h4>
+                    <ul>
+                        <li><h:commandLink action="identifyPerson">Report Claim</h:commandLink></li>                    
+                    </ul>
+                    <h4>Search</h4>
+                    <ul>
+                        <li><h:commandLink action="searchClaims" immediate="true">Claims</h:commandLink></li>
+                        <li><h:commandLink action="searchPersons" immediate="true">Persons</h:commandLink></li>
+                    </ul>
+                </ui:insert>
+            </div>
+            <div>
+                <div id="right">
+                    <ui:insert name="right">
+                        <h4>Enterprise API</h4>                                            
+                        <h5>Information services</h5>                                            
+                        <ul>
+                            <li><a href="/WebServiceProvider/ClaimIdentificationWebService?WSDL">Claim Identification</a></li>
+                            <li><a href="/WebServiceProvider/PersonIdentificationWebService?WSDL">Person Identification</a></li>
+                            <li><a  href="/WebServiceProvider/LookupWebService?WSDL">Lookup service</a></li>
+                        </ul>
+                        <h5>Activity services</h5>                                            
+                        <ul>
+                            <li><a href="/WebServiceProvider/ClaimActivityWebService?WSDL">Claim Activity</a></li>
+                            <li><a  href="/WebServiceProvider/PersonActivityWebService?WSDL">Person Activity</a></li>
+                        </ul>
+                        <h5>Processes</h5>                                            
+                        <ul>
+                            <li><a href="/WebServiceProvider/ReportClaimProcessWebService?WSDL">Report Claim</a></li>                            
+                        </ul>
+                        
+                    </ui:insert>
+                </div>
+                <div id="content" class="right_content">
+                    <ui:insert name="content">Content</ui:insert>
+                </div>
+            </div>
+        </div>        
+            </h:form>
+        </f:view>
+                
+    </h:body>
+
+</html>

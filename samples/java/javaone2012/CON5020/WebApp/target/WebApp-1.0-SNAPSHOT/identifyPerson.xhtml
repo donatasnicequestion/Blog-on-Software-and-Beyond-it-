@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"                
+                    template="/templates/template.xhtml">
+        <ui:define name="top">   
+            <h3>Oops. Something went wrong? Report a new Claim!</h3>
+        </ui:define>    
+
+        <ui:define name="content">
+            <h2>1. Please provide personal information</h2>
+
+            <f:validateBean validationGroups="soa.sample.model.validation.groups.PersonActivityCreatePerson">
+
+                <h:messages globalOnly="true" class="error"/>
+                <fieldset id= "person">
+                    <legend>Person reporting a claim</legend>
+
+                    <h:panelGrid columns="3">
+
+                        <h:outputLabel for="firstname" value="First Name" />
+                        <h:inputText id="firstname" value="#{ReportClaimProcessController.reportClaimInput.personActivityInput.person.firstName}"/>
+                        <h:message for="firstname"/>
+
+                        <h:outputLabel for="lastname" value="Last Name" />
+                        <h:inputText id="lastname" value="#{ReportClaimProcessController.reportClaimInput.personActivityInput.person.lastName}" />
+                        <h:message for="lastname" class="error"/>
+
+                    </h:panelGrid>
+
+                </fieldset>
+
+                <fieldset id= "address">
+                    <legend>Address</legend>
+
+                <h:panelGrid columns="3">
+
+                    <h:outputLabel for="address" value="Address" />
+                    <h:inputText id="address" value="#{ReportClaimProcessController.reportClaimInput.personActivityInput.address.address}"/>
+                    <h:message for="address"/>
+
+                    <h:outputLabel for="city" value="City"/>
+                    <h:inputText id="city" value="#{ReportClaimProcessController.reportClaimInput.personActivityInput.address.city}" />
+                    <h:message for="city" class="error"/>
+
+                    <h:outputLabel for="zip" value="Zip" />
+                    <h:inputText id="zip" value="#{ReportClaimProcessController.reportClaimInput.personActivityInput.address.zip}" />
+                    <h:message for="zip" class="error"/>
+
+                </h:panelGrid>
+                </fieldset>
+            </f:validateBean>                
+
+            <h:panelGrid columns="2">
+                <h:commandLink value="Next" action="describeClaim"></h:commandLink>
+            </h:panelGrid>
+
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>    

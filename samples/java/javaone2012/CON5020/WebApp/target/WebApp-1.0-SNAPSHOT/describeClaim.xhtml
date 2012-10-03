@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"                
+                    template="/templates/template.xhtml">
+        <ui:define name="top">   
+            <h3>Oops. Something went wrong? Report a new Claim!</h3>
+        </ui:define>    
+
+        <ui:define name="content">
+            <h2>2. Please provide information about accident</h2>            
+            
+            <fieldset id= "type">
+                    <legend>Person</legend>
+                    <h:outputLabel>First name:</h:outputLabel>
+                    <h:outputText style="font-weight: bold" value="#{ReportClaimProcessController.reportClaimInput.personActivityInput.person.firstName} " />                    
+                    <h:outputLabel>Last name:</h:outputLabel>
+                    <h:outputText style="font-weight: bold" value="#{ReportClaimProcessController.reportClaimInput.personActivityInput.person.lastName}" />
+            </fieldset>
+
+            <f:validateBean validationGroups="soa.sample.model.validation.groups.ClaimActivityCreateClaim">
+
+                <h:messages globalOnly="true" class="error"/>
+
+                <fieldset id= "type">
+                    <legend>Type of accident</legend>
+
+                    <h:panelGrid columns="3">
+
+                        <h:outputLabel for="type" value="Type" />
+                        <h:selectOneMenu id="type" value="#{ReportClaimProcessController.reportClaimInput.claimActivityInput.claim.type}">
+                            <f:selectItems value="#{ReportClaimProcessController.claimTypes}" var="var" 
+                                           itemValue="#{var}" itemLabel="#{var.title}"/>
+                            <f:ajax render="incidentDetails"></f:ajax>
+                        </h:selectOneMenu>
+                        <h:message for="type" class="error"/>
+
+                        <h:outputLabel for="injuredPersons" value="Any persons were injured?" />
+                        <h:selectOneRadio id="injuredPersons" value="#{ReportClaimProcessController.reportClaimInput.claimActivityInput.claim.injuredPersons}">
+                            <f:selectItems value="#{ReportClaimProcessController.yesNoItems}" />
+                        </h:selectOneRadio>
+                        <h:message for="injuredPersons" class="error"/>
+
+                        <h:outputLabel for="officialsContacted" value="Officials were contacted?" />
+                        <h:selectOneRadio id="officialsContacted" value="#{ReportClaimProcessController.reportClaimInput.claimActivityInput.claim.officialsContacted}">
+                            <f:selectItems value="#{ReportClaimProcessController.yesNoItems}" />
+                        </h:selectOneRadio>
+                        <h:message for="officialsContacted" class="error"/>
+
+                        <h:outputLabel for="whitnesses" value="Are there any whitnesses?" />
+                        <h:selectOneRadio id="whitnesses" value="#{ReportClaimProcessController.reportClaimInput.claimActivityInput.claim.whitnesses}">
+                            <f:selectItems value="#{ReportClaimProcessController.yesNoItems}" />
+                        </h:selectOneRadio>
+                        <h:message for="whitnesses" class="error"/>
+
+                    </h:panelGrid>
+
+                </fieldset>
+
+                <fieldset id= "type">
+                    <h:panelGroup id="incidentDetails">
+
+                        <legend>#{ReportClaimProcessController.reportClaimInput.claimActivityInput.claim.type.title} accident details</legend>                
+
+                        <h:panelGrid columns="3" rendered="#{ReportClaimProcessController.reportClaimInput.claimActivityInput.claim.type.title == 'Property'}">
+                            
+                            <h:outputLabel for="lossType" value="Type of Loss" />    
+                            <h:selectOneMenu id="lossType" value="#{ReportClaimProcessController.propertyClaim.lossTypeId}">
+                                <f:selectItems value="#{ReportClaimProcessController.lossTypList}" var="var" 
+                                               itemValue="#{var.id}" itemLabel="#{var.code} #{var.name}"/>                                
+                            </h:selectOneMenu>
+                            <h:message for="lossType" class="error"/>
+                            
+                            
+                            <h:outputLabel for="description" value="Description" />
+                            <h:inputText id="description" value="#{ReportClaimProcessController.propertyClaim.description}"/>
+                            <h:message for="description" class="error"/>
+
+                        </h:panelGrid>    
+
+                        <h:panelGrid columns="3" rendered="#{ReportClaimProcessController.reportClaimInput.claimActivityInput.claim.type.title == 'Auto'}">
+
+                            <h:outputLabel for="plateNumber" value="Licence plate number" />
+                            <h:inputText id="plateNumber" value="#{ReportClaimProcessController.autoClaim.plateNumber}"/>
+                            <h:message for="plateNumber" class="error"/>
+                            
+                            <h:outputLabel for="vehicle" value="Vehicle" />
+                            <h:inputText id="vehicle" value="#{ReportClaimProcessController.autoClaim.verhicle}"/>
+                            <h:message for="vehicle" class="error"/>
+                            
+                            <h:outputLabel for="driverReporting" value="Is driver reporting an incident?" />
+                            <h:selectOneRadio id="driverReporting" value="#{ReportClaimProcessController.autoClaim.driverIsReporter}">
+                                <f:selectItems value="#{ReportClaimProcessController.yesNoItems}" />
+                            </h:selectOneRadio>
+                            <h:message for="driverReporting" class="error"/>
+                            
+                        </h:panelGrid>    
+                        
+                                        <fieldset id= "address">
+                    <legend>Accident address</legend>
+
+                        <h:panelGrid columns="3" rendered="#{ReportClaimProcessController.reportClaimInput.claimActivityInput.claim.type.title == 'Auto'}">
+
+                            <h:outputLabel for="address" value="Address" />
+                            <h:inputText id="address" value="#{ReportClaimProcessController.autoClaim.accidentAddress.address}"/>
+                            <h:message for="address" class="error"/>
+
+                            <h:outputLabel for="city" value="City"/>
+                            <h:inputText id="city" value="#{ReportClaimProcessController.autoClaim.accidentAddress.city}" />
+                            <h:message for="city" class="error"/>
+
+                            <h:outputLabel for="zip" value="Zip" />
+                            <h:inputText id="zip" value="#{ReportClaimProcessController.autoClaim.accidentAddress.zip}" />
+                            <h:message for="zip" class="error"/>
+
+                        </h:panelGrid>
+                    
+                        <h:panelGrid columns="3" rendered="#{ReportClaimProcessController.reportClaimInput.claimActivityInput.claim.type.title == 'Property'}">
+
+                            <h:outputLabel for="address2" value="Address" />
+                            <h:inputText id="address2" value="#{ReportClaimProcessController.propertyClaim.address.address}"/>
+                            <h:message for="address2"/>
+
+                            <h:outputLabel for="city2" value="City"/>
+                            <h:inputText id="city2" value="#{ReportClaimProcessController.propertyClaim.address.city}" />
+                            <h:message for="city2" class="error"/>
+
+                            <h:outputLabel for="zip2" value="Zip" />
+                            <h:inputText id="zip2" value="#{ReportClaimProcessController.propertyClaim.address.zip}" />
+                            <h:message for="zip2" class="error"/>
+
+                        </h:panelGrid>                    
+                    
+                        </fieldset>
+
+                    </h:panelGroup>
+                </fieldset>                    
+
+            </f:validateBean>                
+
+            <h:panelGrid columns="2">
+                <h:commandLink value="Back" action="identifyPerson" immediate="true"></h:commandLink>
+                <h:commandButton value="Submit" action="#{ReportClaimProcessController.reportClaim()}"/>
+            </h:panelGrid>
+        </ui:define>
+    </ui:composition>
+
+
+</html>

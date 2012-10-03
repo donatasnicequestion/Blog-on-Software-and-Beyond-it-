@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"                
+                    template="/templates/template.xhtml">
+        <ui:define name="top">   
+            <h3>Oops. Something went wrong? Report a new Claim!</h3>
+        </ui:define>    
+
+        <ui:define name="content">
+            <h2>Persons</h2>
+
+            <h:messages globalOnly="true" class="error"/>
+
+            <h:dataTable value="#{ReportClaimProcessController.personsSearchResult.personIdentificationResultList}" var="result"
+                         styleClass="dataTable" rowClasses="odd,even">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    #{result.person.id}
+                </h:column> 
+
+                <h:column>
+                    <f:facet name="header">Person</f:facet>					
+                    #{result.person.firstName} #{result.person.lastName} 
+                </h:column>
+
+            </h:dataTable>                
+
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>    

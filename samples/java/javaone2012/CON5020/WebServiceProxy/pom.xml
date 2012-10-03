@@ -1,0 +1,170 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>javaone.sample</groupId>
+  <artifactId>WebServiceProxy</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>WebServiceProxy</name>
+  <url>http://maven.apache.org</url>
+    <build>
+        <resources>
+            <resource>
+                <targetPath>META-INF</targetPath>
+                <directory>src</directory>
+                <includes>
+                    <include>jax-ws-catalog.xml</include>
+                    <include>wsdl/**</include>
+                    <include>beans.xml</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>                                                                        
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlUrls>
+                                <wsdlLocation>http://localhost:8080/WebServiceProvider/LookupWebService?WSDL</wsdlLocation>
+                                <wsdlLocation>http://localhost:8080/WebServiceProvider/ClaimActivityWebService?WSDL</wsdlLocation>
+                                <wsdlLocation>http://localhost:8080/WebServiceProvider/ClaimIdentificationWebService?WSDL</wsdlLocation>
+                                <wsdlLocation>http://localhost:8080/WebServiceProvider/PersonActivityWebService?WSDL</wsdlLocation>
+                                <wsdlLocation>http://localhost:8080/WebServiceProvider/PersonIdentificationWebService?WSDL</wsdlLocation>
+                                <wsdlLocation>http://localhost:8080/WebServiceProvider/ReportClaimProcessWebService?WSDL</wsdlLocation>
+                            </wsdlUrls>
+                            <staleFile>${project.build.directory}/jaxws/stale/LookupService.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-webservice-client-proxy</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>javax.xml</groupId>
+                        <artifactId>webservices-api</artifactId>
+                        <version>1.4</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <target>2.0</target> 
+                    <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
+                    <xnocompile>true</xnocompile>
+                    <verbose>true</verbose>
+                    <extension>true</extension>
+                    <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
+                </configuration>
+            </plugin>
+            
+            
+            <!-- Clean generated sources  -->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.3</version>
+                <executions>                    
+                    <!-- We reuse our common data model so get rid of artifacts created by wsimport  -->
+                    <execution>
+                        <id>clean generated sources not used</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                        <configuration>
+                            <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                            <filesets>
+                                <!-- remove generated types -->
+                                <fileset>
+                                    <directory>${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model/data</directory>                            
+                                </fileset>                                
+                                <fileset>
+                                    <directory>${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model/faults</directory>                            
+                                </fileset>
+                                <!-- remove generated BusinessException -->                                                                
+                                <fileset>
+                                    <directory>${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model</directory>                                                                
+                                    <includes>
+                                        <include>**/BusinessException.java</include>                                        
+                                    </includes>
+                                </fileset>
+                            </filesets>
+                        </configuration>                        
+                    </execution>                                        
+                </executions>                
+            </plugin>
+            
+            
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-sources</phase>
+                            <configuration>
+                                <!-- do some search-replace after generation for complete  resusability of our service model:
+                                *  service endpoint interfaces generated by wsimport should be based on our business interfaces
+                                -->
+                                <tasks>
+                                    <replace token= "throws BusinessException" value="throws soa.sample.model.faults.BusinessException" dir="${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model">                                 
+                                        <include name="**/*.java"/>
+                                    </replace>
+                                    <replace token= "interface ReportClaimProcessWebService" value="interface ReportClaimProcessWebService extends ReportClaimProcess" dir="${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model">                                 
+                                        <include name="**/*.java"/>
+                                    </replace>
+                                    <replace token= "interface LookupWebService" value="interface LookupWebService extends LookupService" dir="${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model">                                 
+                                        <include name="**/*.java"/>
+                                    </replace>
+                                    <replace token= "interface PersonIdentificationWebService" value="interface PersonIdentificationWebService extends PersonIdentificationService" dir="${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model">                                 
+                                        <include name="**/*.java"/>
+                                    </replace>
+                                    <replace token= "interface ClaimIdentificationWebService" value="interface ClaimIdentificationWebService extends ClaimIdentificationService" dir="${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model">                                 
+                                        <include name="**/*.java"/>
+                                    </replace>                                    
+                                    <replace token= "interface PersonActivityWebService" value="interface PersonActivityWebService extends PersonActivityService" dir="${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model">                                 
+                                        <include name="**/*.java"/>
+                                    </replace>                                    
+                                    <replace token= "interface ClaimActivityWebService" value="interface ClaimActivityWebService extends ClaimActivityService" dir="${project.build.directory}/generated-sources/jaxws-wsimport/soa/sample/model">                                 
+                                        <include name="**/*.java"/>
+                                    </replace>                                                                        
+                                </tasks>
+                            </configuration>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                        <id>process generated Sources</id>
+                    </execution>
+                </executions>
+            </plugin>
+            
+        </plugins>
+    </build>
+    <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>ServiceModel</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+      <version>6.0</version>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>

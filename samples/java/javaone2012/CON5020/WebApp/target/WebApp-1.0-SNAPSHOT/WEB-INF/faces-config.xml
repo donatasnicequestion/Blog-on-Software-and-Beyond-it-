@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.0"
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+    <!-- Configure Bean Validation as default validator for EditableValueHolder elements.
+        @see JavaServer Faces Specification ,Version 2.0 , Chapter: 3.5.3 Validation Registration  -->
+    <default-validators>
+        <validator-id>javax.faces.Bean</validator-id>
+    </default-validators>
+</faces-config>
