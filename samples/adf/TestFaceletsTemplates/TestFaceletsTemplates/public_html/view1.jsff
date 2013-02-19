@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/MainTemplateDef.jsf" id="pt1">
+        <f:facet name="content">
+            <af:commandButton text="Print" id="cb1">
+                <af:showPrintablePageBehavior/>
+            </af:commandButton>
+        </f:facet>
+    </af:pageTemplate>
+</ui:composition>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+    <af:xmlContent>
+        <afc:component>
+            <afc:display-name>MainTemplateDef</afc:display-name>
+            <afc:facet>
+                <afc:facet-name>content</afc:facet-name>
+            </afc:facet>
+        </afc:component>
+    </af:xmlContent>
+    <af:panelGroupLayout id="pt_pgl1" layout="vertical">
+        <af:outputLabel value="Content area" id="pt_ol1"/>
+        <af:facetRef facetName="content"/>
+    </af:panelGroupLayout>
+</af:pageTemplateDef>
