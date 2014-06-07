@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.nicequestion.donatas.adf" ClientType="Generic">
+  <pageMap>
+    <page path="/form.jsf" usageId="com_nicequestion_donatas_adf_formPageDef"/>
+    <page path="/list.jsf" usageId="com_nicequestion_donatas_adf_listPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_nicequestion_donatas_adf_formPageDef" path="com.nicequestion.donatas.adf.pageDefs.formPageDef"/>
+    <page id="com_nicequestion_donatas_adf_listPageDef" path="com.nicequestion.donatas.adf.pageDefs.listPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="HRService" path="com.nicequestion.donatas.adf.HRService"/>
+  </dataControlUsages>
+</Application>

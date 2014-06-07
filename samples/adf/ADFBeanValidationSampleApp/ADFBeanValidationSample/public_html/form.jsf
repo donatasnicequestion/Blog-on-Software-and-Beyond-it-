@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="form.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelHeader text="Employee Form" id="ph1">
+                <f:facet name="context"/>
+                <f:facet name="menuBar"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="legend"/>
+                <f:facet name="info"/>
+                <af:panelFormLayout id="pfl1">
+                    <af:inputText value="#{bindings.id.inputValue}" label="#{bindings.id.hints.label}"
+                                  required="#{bindings.id.hints.mandatory}" columns="#{bindings.id.hints.displayWidth}"
+                                  maximumLength="#{bindings.id.hints.precision}"
+                                  shortDesc="#{bindings.id.hints.tooltip}" id="it1">
+                        <f:validator binding="#{bindings.id.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.id.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.name.inputValue}" label="#{bindings.name.hints.label}"
+                                  required="#{bindings.name.hints.mandatory}"
+                                  columns="#{bindings.name.hints.displayWidth}"
+                                  maximumLength="#{bindings.name.hints.precision}"
+                                  shortDesc="#{bindings.name.hints.tooltip}" id="it2">
+                        <f:validator binding="#{bindings.name.validator}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout id="pgl1" layout="horizontal">
+                            <af:button text="Submit" id="b1"/>
+                            <af:link text="Switch to Employee List" id="l1" action="list"/>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s1"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelHeader>
+        </af:form>
+    </af:document>
+</f:view>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="12.1.2.66.68" id="DataControls"
+                    Package="com.nicequestion.donatas.adf">
+  <AdapterDataControl id="HRService" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.nicequestion.donatas.adf.service.HRService"
+                      BeanClass="com.nicequestion.donatas.adf.service.HRService"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.nicequestion.donatas.adf.model.Employee"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.nicequestion.donatas.adf.service.HRService"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="listPageDef"
+                Package="com.nicequestion.donatas.adf.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="HRService" id="HRServiceIterator"/>
+    <accessorIterator MasterBinding="HRServiceIterator" Binds="employeeList" RangeSize="25" DataControl="HRService"
+                      BeanClass="com.nicequestion.donatas.adf.model.Employee" id="employeeListIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="employeeListIterator" id="employeeList">
+      <nodeDefinition DefName="com.nicequestion.donatas.adf.model.Employee" Name="employeeList0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="employeeListIterator" id="Create" RequiresUpdateModel="true" Action="createRow"/>
+  </bindings>
+</pageDefinition>

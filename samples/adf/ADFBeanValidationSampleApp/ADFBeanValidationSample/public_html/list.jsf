@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="list.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelHeader text="Employee List" id="ph1">
+                <f:facet name="context"/>
+                <f:facet name="menuBar"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="legend"/>
+                <f:facet name="info"/>
+                <af:panelFormLayout id="pfl1">
+                    <f:facet name="footer">
+                        <af:panelGroupLayout id="pgl1">
+                            <af:button text="Submit" id="b1"/>
+                            <af:link text="Switch to Employee Form" id="l1" action="form"/>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s1"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                    <af:link actionListener="#{bindings.Create.execute}" text="Create"
+                             disabled="#{!bindings.Create.enabled}" id="l2"/>
+                    <af:table value="#{bindings.employeeList.collectionModel}" var="row"
+                              rows="#{bindings.employeeList.rangeSize}"
+                              emptyText="#{bindings.employeeList.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.employeeList.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.employeeList.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.employeeList.rangeSize}" id="t1"
+                              partialTriggers="::l2">
+                        <af:column headerText="#{bindings.employeeList.hints.id.label}" id="c1">
+                            <af:inputText value="#{row.bindings.id.inputValue}"
+                                          label="#{bindings.employeeList.hints.id.label}"
+                                          required="#{bindings.employeeList.hints.id.mandatory}"
+                                          columns="#{bindings.employeeList.hints.id.displayWidth}"
+                                          maximumLength="#{bindings.employeeList.hints.id.precision}"
+                                          shortDesc="#{bindings.employeeList.hints.id.tooltip}" id="it1">
+                                <f:validator binding="#{row.bindings.id.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.employeeList.hints.id.format}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.employeeList.hints.name.label}" id="c2">
+                            <af:inputText value="#{row.bindings.name.inputValue}"
+                                          label="#{bindings.employeeList.hints.name.label}"
+                                          required="#{bindings.employeeList.hints.name.mandatory}"
+                                          columns="#{bindings.employeeList.hints.name.displayWidth}"
+                                          maximumLength="#{bindings.employeeList.hints.name.precision}"
+                                          shortDesc="#{bindings.employeeList.hints.name.tooltip}" id="it2">
+                                <f:validator binding="#{row.bindings.name.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                    </af:table>
+                </af:panelFormLayout>
+            </af:panelHeader>
+        </af:form>
+    </af:document>
+</f:view>
