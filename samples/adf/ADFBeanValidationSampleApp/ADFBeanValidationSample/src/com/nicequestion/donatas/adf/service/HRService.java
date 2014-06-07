@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/*import oracle.adfinternal.controller.state.AdfcContext;
-import oracle.adfinternal.controller.state.PageFlowStack;
-import oracle.adfinternal.controller.state.PageFlowStackEntry;*/
-
 public class HRService {
     
     private List<Employee> employeeList;
